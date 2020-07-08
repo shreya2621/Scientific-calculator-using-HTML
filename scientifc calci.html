@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><title>Simple Calculator</title></head>
+
+<!-- styling the look of the calculator -->
+<style> 
+table {text-align:center; width: 700px; height: 600px; border: solid green 2px; border-radius:15px;}
+input {text-align:right; width: 400px; height: 50px; font-size:29px; font-family:san-serif;}
+button{text-align:center; width: 50px; height: 50px; font-size:23px; border-radius:5px; border: solid grey 1.5px; font-family:san-serif;}
+button:hover {background-color:silver; -webkit-transform:translateY(-6px);} 
+tr{background-color:silver; width:100px;}
+a button{border-radius:0px; width:200px;}
+</style>
+
+<script> <!-- Javascript -->
+function show(num) <!-- to show value in the text box -->
+{
+	document.getElementById("ans").value += num 
+}
+
+function calculate() <!-- calculates the value and show the answer in the text box -->
+{
+ 	let a = document.getElementById("ans").value 
+                let b = eval(a) 
+                document.getElementById("ans").value = b
+}
+
+function fact() <!-- calculates factorial of number -->
+{	
+	let f=1	
+	let n = document.getElementById("ans").value 
+	for(i = 1;i<=n;i++)
+	{
+		f=f*i
+	}
+	 document.getElementById("ans").value = f
+} 
+
+function per() <!-- calculates percentage -->
+{	
+	let n = document.getElementById("ans").value 
+	let m = n/100
+	document.getElementById("ans").value = m
+}
+
+function bcksp() <!-- backspace-->
+{
+	size=ans.value.length
+	ans.value = ans.value.substring(0, size-1)
+	
+}
+</script>
+
+<body>
+<div style="font-family:san-serif;font-size:30px;text-decoration:underline;text-align:center;">Scientific Calculator</div>
+<br>
+
+<center><table border=1 cellspacing=1px cellspadding=1px>
+<tr><td colspan=7><input type=text id="ans" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input></td></tr> <!-- only numbers should be the input-->
+
+<tr>
+<td><button onclick=show('7')>7</button></td>
+<td><button onclick=show('8')>8</button></td>
+<td><button onclick=show('9')>9</button></td>
+<td><button onclick=show('-')>-</button></td>
+<td><button onclick=show('%')>mod</button></td>
+<td><button onclick="ans.value += 'Math.PI'">pi</button></td>
+<td rowspan=2><button onclick="ans.value = ' '"> AC</button></td> <!-- to clear the text box -->
+</tr>
+
+<tr>
+<td><button onclick=show('4')>4</button></td>
+<td><button onclick=show('5')>5</button></td>
+<td><button onclick=show('6')>6</button></td>
+<td><button onclick=show('+')>+</button></td>
+<td><button onclick="ans.value += 'Math.exp('">e</button></td>
+<td><button onclick="ans.value += 'Math.sqrt('">sqrt</button></td>
+</tr>
+
+<tr>
+<td><button onclick=show('1')>1</button></td>
+<td><button onclick=show('2')>2</button></td>
+<td><button onclick=show('3')>3</button></td>
+<td><button onclick=show('*')>*</button></td>
+<td><button onclick=per()>%</button></td>
+<td><button onclick=fact()>n!</button></td>
+<td><button onclick=bcksp()><=</button></td>
+</tr>
+
+<tr>
+<td><button onclick=show('0')>0</button></td>
+<td><button onclick=show(',')>,</button></td>
+<td><button onclick=show('.')>.</button></td>
+<td><button onclick=show('/')>/</button></td>
+<td><button onclick="ans.value += 'Math.pow('">^</button></td>
+<td><button onclick=show('(')>(</button></td>
+<td rowspan=2><button onclick=calculate()>=</button></td>
+</tr>
+
+<tr>
+<td><button onclick="ans.value += 'Math.sin('">sin</button></td>
+<td><button onclick="ans.value += 'Math.cos('">cos</button></td>
+<td><button onclick="ans.value += 'Math.tan('">tan</button></td>
+<td><button onclick="ans.value = 'Math.Log10('">log</button></td>
+<td><button onclick="ans.value += 'Math.LN2'">ln</button></td>
+<td><button onclick=show(')')>)</button></td>
+</tr>
+</table><br>
+</center></body></html>
